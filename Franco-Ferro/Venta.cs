@@ -21,20 +21,31 @@ namespace Franco_Ferro
 
         }
 
-        public Venta(int id, string comentarios, int idUsuarios)
+        public Venta(int id, string comentarios, int idUsuario)
         {
             this._id = id;
             this._comentarios = comentarios;
-            this._idUsuario= idUsuarios;
+            this._idUsuario= idUsuario;
 
         }
 
-        public int ID { get; set; }
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
-        public string Comentarios { get; set;}
+        public string Comentarios
+        {
+            get { return _comentarios; }
+            set { _comentarios = value; }
+        }
 
-        public int IDUsuario { get; set;}
-
+        public int IDUsuario
+        {
+            get { return _idUsuario; }
+            set { _idUsuario = value; }
+        }
 
     }
 }

@@ -30,25 +30,49 @@ namespace Franco_Ferro
         public Producto(int id, string descripcion, double costo, double precioVenta, int stock, int idUsuario)
         {
             this._id = id;
-            this._descripcion = string.Empty;
+            this._descripcion = descripcion;
             this._costo = costo;
-            this._precioVenta = 0;
+            this._precioVenta = precioVenta;
             this._stock = stock;
             this._idUsuario = idUsuario;
 
         }
 
-        public int Id { get; set; }
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
-        public string Descripcion { get; set; }
+        public string Descripcion
+        {
+            get { return _descripcion; }
+            set { _descripcion = value; }
+        }
 
-        public double Costo { get; set; }
+        public double Costo
+        {
+            get { return _costo; }
+            set { _costo = value; }
+        }
 
-        public double PrecioVenta { get; set; }
+        public double PrecioVenta
+        {
+            get { return _precioVenta; }
+            set { _precioVenta = value; }
+        }
 
-        public int Stock { get; set; }
+        public int Stock
+        {
+            get { return _stock; }
+            set { _stock = value; }
+        }
 
-        public int IdUsuario { get; set; }
+        public int IdUsuario
+        {
+            get { return _idUsuario; }
+            set { _idUsuario = value; }
+        }
 
 
 

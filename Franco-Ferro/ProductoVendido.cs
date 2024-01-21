@@ -14,7 +14,7 @@ namespace Franco_Ferro
         private int _stock;
         private int _idVenta;
 
-        public Producto()
+        public ProductoVendido()
         {
             _id = 0;
             _idProducto = 0;
@@ -23,22 +23,38 @@ namespace Franco_Ferro
 
         }
 
-        public Producto(int id, int idProducto, int stock, int idVenta)
+        public ProductoVendido(int id, int idProducto, int stock, int idVenta)
         {
             this._id = id;
             this._idProducto = idProducto;
             this._stock = stock;
-            this._idVenta = 0;
+            this._idVenta = idVenta;
 
         }
 
-        public int ID { get; set; }
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
-        public int IdProducto { get; set; }
+        public int IdProducto
+        {
+            get { return _idProducto; }
+            set { _idProducto = value; }
+        }
 
-        public int Stock { get; set; }
+        public int Stock
+        {
+            get { return _stock; }
+            set { _stock = value; }
+        }
 
-        public int IDVenta { get; set; } 
+        public int IDVenta
+        {
+            get { return _idVenta; }
+            set { _idVenta = value; }
+        }
 
 
     }

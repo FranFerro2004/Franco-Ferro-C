@@ -38,19 +38,44 @@ namespace Franco_Ferro
 
         }
 
-        public int Id { get; set; }
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
-        public string Nombre { get; set; }
+        public string Nombre
+        {
+            get { return _nombre; }
+            set { _nombre = value; }
+        }
 
-        public string Apellido { get; set; }
+        public string Apellido
+        {
+            get { return _apellido; }
+            set { _apellido = value; }
+        }
 
-        public string NombreUsuario { get; set; }
+        public string NombreUsuario
+        {
+            get { return _nombreUsuario; }
+            set { _nombreUsuario = value; }
+        }
 
-        public string Contrasena { set; }
+        public string Contrasena
+        {
+            get { return _contrasena; }
+            set { _contrasena = value; }
+        }
 
-        public string Mail { get; set; }
-
-
-
+        public string Mail
+        {
+            get { return _mail; }
+            set { _mail = value; }
+        }
     }
+
+
+
 }
+
