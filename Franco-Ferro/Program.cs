@@ -738,8 +738,182 @@ namespace Franco_Ferro
   
         static void MenuVentas()
         {
-            // Implementa las funciones relacionadas con Ventas aquí
-            Console.WriteLine("Funcionalidad de Ventas aún no implementada.");
+
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("==== Menú de Ventas ====");
+                    Console.WriteLine("1. Obtener Venta por Id");
+                    Console.WriteLine("2. Listar Todas las Ventas");
+                    Console.WriteLine("3. Crear Nueva Venta");
+                    Console.WriteLine("4. Modificar Venta");
+                    Console.WriteLine("5. Eliminar Venta");
+                    Console.WriteLine("6. Salir");
+
+                    Console.Write("Ingrese la opción deseada: ");
+                    string opcion = Console.ReadLine();
+
+                    switch (opcion)
+                    {
+                        case "1":
+                            Console.Write("Ingrese el Id de la venta a obtener: ");
+                            if (int.TryParse(Console.ReadLine(), out int idObtener))
+                            {
+                                MostrarVenta(VentaData.ObtenerVenta(idObtener));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Entrada no válida para el Id.");
+                            }
+                            break;
+
+                        case "2":
+                            MostrarVenta(VentaData.ListarVentas());
+                            break;
+
+                        case "3":
+                            CrearNuevaVenta();
+                            break;
+
+                        case "4":
+                            ModificarVenta();
+                            break;
+
+                        case "5":
+                            EliminarVenta();
+                            break;
+
+                        case "6":
+                            Environment.Exit(0);
+                            break;
+
+                        default:
+                            Console.WriteLine("Opción no válida. Por favor, ingrese un número del 1 al 6.");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+
+                Console.WriteLine("\nPresione cualquier tecla para continuar...");
+                Console.ReadKey();
+                Console.Clear();
+            }
         }
+
+        static void MostrarVenta(List<Venta> ventas)
+        {
+            foreach (var venta in ventas)
+            {
+                Console.WriteLine($"Id: {venta.ID}, Comentarios: {venta.Comentarios}, IdUsuario: {venta.IDUsuario}");
+            }
+        }
+
+        static void CrearNuevaVenta()
+        {
+            try
+            {
+                Console.Write("Ingrese los comentarios de la nueva venta: ");
+                string comentarios = Console.ReadLine();
+
+                Console.Write("Ingrese el Id del usuario: ");
+                if (int.TryParse(Console.ReadLine(), out int idUsuario))
+                {
+                    VentaData.CrearVenta(new Venta
+                    {
+                        Comentarios = comentarios,
+                        IDUsuario = idUsuario
+                    });
+                    Console.WriteLine("Venta creada exitosamente.");
+                }
+                else
+                {
+                    Console.WriteLine("Entrada no válida para el Id del usuario.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al crear la venta: {ex.Message}");
+            }
+        }
+
+        static void ModificarVenta()
+        {
+            try
+            {
+                Console.Write("Ingrese el Id de la venta a modificar: ");
+                if (int.TryParse(Console.ReadLine(), out int idModificar))
+                {
+                    var venta = VentaData.ObtenerVenta(idModificar);
+                    if (venta.Count > 0)
+                    {
+                        Console.Write("Ingrese los nuevos comentarios de la venta: ");
+                        string nuevosComentarios = Console.ReadLine();
+
+                        Console.Write("Ingrese el nuevo Id del usuario: ");
+                        if (int.TryParse(Console.ReadLine(), out int nuevoIdUsuario))
+                        {
+                            VentaData.ModificarVenta(new Venta
+                            {
+                                ID = idModificar,
+                                Comentarios = nuevosComentarios,
+                                IDUsuario = nuevoIdUsuario
+                            });
+                            Console.WriteLine("Venta modificada exitosamente.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Entrada no válida para el nuevo Id del usuario.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se encontró ninguna venta con el Id proporcionado.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Entrada no válida para el Id.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al modificar la venta: {ex.Message}");
+            }
+        }
+
+        static void EliminarVenta()
+        {
+            try
+            {
+                Console.Write("Ingrese el Id de la venta a eliminar: ");
+                if (int.TryParse(Console.ReadLine(), out int idEliminar))
+                {
+                    var venta = VentaData.ObtenerVenta(idEliminar);
+                    if (venta.Count > 0)
+                    {
+                        VentaData.EliminarVenta(new Venta { ID = idEliminar });
+                        Console.WriteLine("Venta eliminada exitosamente.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se encontró ninguna venta con el Id proporcionado.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Entrada no válida para el Id.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar la venta: {ex.Message}");
+            }
+        }
+
     }
-}
+    }
+

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Franco_Ferro
 {
-    internal class Venta
+    public class Venta
     {
 
         private int _id;
