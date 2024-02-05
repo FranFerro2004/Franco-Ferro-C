@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Franco_Ferro
 {
-    internal class Usuario
+    public class Usuario
     {
         private int _id;
         private string _nombre;
